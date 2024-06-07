@@ -1,17 +1,26 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Electron</title>
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
-    />
-  </head>
+    <title>Drag window</title>
 
+    <style type="text/css">
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #titlebar {
+        height: 50px;
+        background-color: red;
+      }
+    </style>
+  </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div id="titlebar"></div>
+
+    <script type="text/javascript">
+      var drag = require('../')
+      drag('#titlebar')
+    </script>
   </body>
 </html>
