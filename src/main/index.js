@@ -7,7 +7,11 @@ function createWindow() {
   const window = new BrowserWindow({
     width: 800,
     height: 600,
-    frame: false,
+    frame: true,
+    titleBarStyle: 'hidden',
+    // show: true,
+    trafficLightPosition: { x: 12, y: 21 },
+    titleBarOverlay: { color: '#fff', symbolColor: 'black' }, // 在windows上，设置默认显示窗口控制工具
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       nodeIntegration: true,
@@ -16,19 +20,30 @@ function createWindow() {
   })
 
   // 修改这里的路径以指向正确的 index.html 文件
-  const indexPath = path.join(__dirname, '../renderer/index.html')
-  console.log('Loading file from path:', indexPath)
+  // const indexPath = path.join(__dirname, '../renderer/index.html')
+  // console.log('Loading file from path:', indexPath)
+
+  // window
+  //   .loadFile(indexPath)
+  //   .then(() => {
+  //     console.log('File loaded successfully.')
+  //   })
+  //   .catch((err) => {
+  //     console.error('Failed to load file:', err)
+  //   })
+
+  const indexPath2 = path.join(__dirname, '../renderer/src/App.vue')
+  console.log('Loading file from path:', indexPath2)
 
   window
-    .loadFile(indexPath)
+    .loadFile(indexPath2)
     .then(() => {
       console.log('File loaded successfully.')
     })
     .catch((err) => {
       console.error('Failed to load file:', err)
     })
-
-  window.webContents.openDevTools()
+  // window.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
